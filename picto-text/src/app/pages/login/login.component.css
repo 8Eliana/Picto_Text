@@ -1,0 +1,20 @@
+.login-page{
+  background-color: var(--secondary-color);
+}
+.card {
+  background-color: var(--primary-color);
+}
+h3,
+p {
+  color: var(--secondary-color2);
+}
+
+.btn {
+  background-color: var(--secondary-color2);
+  color: var(--primary-color);
+}
+
+.link-to-register {
+  color: var(--secondary-color2);
+  cursor: pointer;
+}

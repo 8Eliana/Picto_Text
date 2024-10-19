@@ -1,1 +1,68 @@
-<p>login works!</p>
+<div class="login-page d-flex flex-column vh-100 justify-content-center align-items-center flex-grow-1">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3"></div>
+      <div class="col-md-6">
+        <div class="card p-5 shadow-effect">
+          <div class="card-body">
+            <div class="text-center">
+              <h3>Login</h3>
+              <p>
+                Va rugam introduceti email-ul si parola corecta pentru a va
+                conecta :
+              </p>
+            </div>
+            <form #loginForm = ngForm>
+              <!--                (ngSubmit)="login(loginForm.value)">-->
+              <div class="form-group">
+                <input
+                  type="email"
+                  class="form-control"
+                  id="email"
+                  placeholder="Email"
+                  name="email"
+                  #Email="ngModel"
+                  ngModel
+                  required
+                  email
+                  [ngClass]="{'is-invalid':Email.touched && Email.invalid}"
+                />
+                <div class="alert alert-danger" *ngIf="Email.touched && Email.invalid">
+                  <div *ngIf="Email.errors?.['required']">Email-ul este obligatoriu!</div>
+                  <div *ngIf="Email.errors?.['email']">Introduceti o adresa de email valida!</div>
+                </div>
+              </div>
+              <div class="form-group mt-3 mb-3">
+                <input
+                  type="password"
+                  class="form-control"
+                  id="password"
+                  placeholder="Parola"
+                  name="password"
+                  #Password="ngModel"
+                  ngModel
+                  required
+                  [ngClass]="{'is-invalid':Password.touched && Password.invalid}"
+                />
+                <div class="alert alert-danger" *ngIf="Password.touched && Password.invalid">Parola este obligatorie!</div>
+              </div>
+              <div class="row text-center">
+                <div class="mt-2">
+                  <button
+                    class="btn btn-block text-center"
+                    id="login"
+                    type="submit"
+                    [disabled]="loginForm.invalid"
+                  >
+                    Login
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3"></div>
+    </div>
+  </div>
+</div>

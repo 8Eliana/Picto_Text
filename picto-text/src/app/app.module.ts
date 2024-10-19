@@ -11,8 +11,9 @@ import { LoginComponent } from './pages/login/login.component';
 import { UserPageComponent } from './pages/user-page/user-page.component';
 import {AngularFireModule} from "@angular/fire/compat";
 import {environment} from "../environments/environments";
-import { LayoutsComponent } from './layouts/layouts.component';
 import { NavbarComponent } from './layouts/navbar/navbar.component';
+import { ToastrModule } from 'ngx-toastr';
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -20,7 +21,6 @@ import { NavbarComponent } from './layouts/navbar/navbar.component';
     FirstPageComponent,
     LoginComponent,
     UserPageComponent,
-    LayoutsComponent,
     NavbarComponent
   ],
   imports: [
@@ -30,6 +30,8 @@ import { NavbarComponent } from './layouts/navbar/navbar.component';
     AngularFirestoreModule,
     AngularFireStorageModule,
     AngularFireAuthModule,
+    ToastrModule.forRoot(),
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
