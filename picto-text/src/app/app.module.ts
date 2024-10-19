@@ -11,13 +11,17 @@ import { LoginComponent } from './pages/login/login.component';
 import { UserPageComponent } from './pages/user-page/user-page.component';
 import {AngularFireModule} from "@angular/fire/compat";
 import {environment} from "../environments/environments";
+import { LayoutsComponent } from './layouts/layouts.component';
+import { NavbarComponent } from './layouts/navbar/navbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FirstPageComponent,
     LoginComponent,
-    UserPageComponent
+    UserPageComponent,
+    LayoutsComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

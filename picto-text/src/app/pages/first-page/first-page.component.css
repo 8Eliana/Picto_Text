@@ -1,0 +1,11 @@
+.card-first-page{
+  height: 100%;
+  color: var(--primary-color);
+  background-color: var(--secondary-color);
+  cursor: pointer;
+}
+
+.btn {
+  background-color: var(--secondary-color2);
+  color: var(--primary-color);
+}

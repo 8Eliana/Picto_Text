@@ -1,0 +1,17 @@
+nav {
+  height: 50px;
+  background-color: var(--secondary-color2);
+}
+
+.nav-link {
+  font-size: 15px;
+  color: var(--primary-color);
+}
+
+.site-logo {
+  color: var(--primary-color);
+}
+
+a{
+  cursor: pointer;
+}
