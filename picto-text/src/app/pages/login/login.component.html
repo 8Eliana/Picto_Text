@@ -12,8 +12,7 @@
                 conecta :
               </p>
             </div>
-            <form #loginForm = ngForm>
-              <!--                (ngSubmit)="login(loginForm.value)">-->
+            <form #loginForm = ngForm (ngSubmit)="onSubmit(loginForm.value)">
               <div class="form-group">
                 <input
                   type="email"
