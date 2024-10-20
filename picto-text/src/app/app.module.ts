@@ -15,6 +15,9 @@ import {environment} from "../environments/environments";
 import { NavbarComponent } from './layouts/navbar/navbar.component';
 import { ToastrModule } from 'ngx-toastr';
 import {FormsModule} from "@angular/forms";
+import { SuperuserPageComponent } from './pages/superuser-page/superuser-page.component';
+import { SuperuserContentPageComponent } from './pages/superuser-content-page/superuser-content-page.component';
+import { UserContentPageComponent } from './pages/user-content-page/user-content-page.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +25,10 @@ import {FormsModule} from "@angular/forms";
     FirstPageComponent,
     LoginComponent,
     UserPageComponent,
-    NavbarComponent
+    NavbarComponent,
+    SuperuserPageComponent,
+    SuperuserContentPageComponent,
+    UserContentPageComponent
   ],
   imports: [
     BrowserModule,
