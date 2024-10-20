@@ -1,0 +1,27 @@
+h2,
+p,
+label {
+  color: var(--secondary-color2);
+}
+
+p{
+  font-size: 20px;
+}
+
+.btn {
+  background-color: var(--secondary-color2);
+  color: var(--primary-color);
+}
+
+input[type="file"] {
+  color: var(--secondary-color);
+}
+
+::-webkit-file-upload-button {
+  background: var(--secondary-color2);
+  color: var(--primary-color);
+}
+
+input[type="file"]{
+  color: var(--secondary-color2);
+}

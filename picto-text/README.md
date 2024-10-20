@@ -1,27 +1,29 @@
 # PictoText
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.5.
+1. CLIP
+   Input: One or two images.
+   Output: While CLIP doesn’t generate text directly, you can use it to rank or score various text descriptions based on their relevance to the images. You could, for instance, concatenate the embeddings from both images and find the closest text description from a set of candidates.
+2. DALL-E 2
+   Input: One or two images along with a text prompt (if desired).
+   Output: You can generate new images based on the input images and associated text, but it can also generate text descriptions or variations based on the combined input, especially if you describe the intent in your prompts.
+3. ViLT (Vision-and-Language Transformer)
+   Input: One or two images, along with a task description.
+   Output: It can generate descriptive text or perform tasks like answering questions based on the visual content of the images.
+4. Image Captioning Models
+   Input: Typically designed for one image, but can be adapted for two images.
+   Output: You can generate a combined caption or a narrative that describes both images, possibly detailing their relationship.
+5. VisualBERT
+   Input: One or two images along with textual information if necessary.
+   Output: This model can generate text based on the visual information provided, making it suitable for tasks like visual question answering or image-based narratives.
+   Example Workflow
+   Here’s a basic outline of how you might use one of these models (e.g., ViLT) for your purpose:
 
-## Development server
+Preprocessing:
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Load your images and preprocess them according to the model requirements (e.g., resizing, normalization).
+Model Input:
 
-## Code scaffolding
+For models like ViLT, feed in your images (one or two) and any additional information you want to include (like context or questions).
+Generate Output:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Run the model to obtain text outputs, which could be descriptions, comparisons, or any specific responses based on the images.

@@ -8,8 +8,7 @@
             <div class="text-center">
               <h3>Login</h3>
               <p>
-                Va rugam introduceti email-ul si parola corecta pentru a va
-                conecta :
+                Vă rugăm introduceți email-ul și parola corectă pentru a vă conecta:
               </p>
             </div>
             <form #loginForm = ngForm (ngSubmit)="onSubmit(loginForm.value)">
@@ -28,7 +27,7 @@
                 />
                 <div class="alert alert-danger" *ngIf="Email.touched && Email.invalid">
                   <div *ngIf="Email.errors?.['required']">Email-ul este obligatoriu!</div>
-                  <div *ngIf="Email.errors?.['email']">Introduceti o adresa de email valida!</div>
+                  <div *ngIf="Email.errors?.['email']">Introduceți o adresă de email validă!</div>
                 </div>
               </div>
               <div class="form-group mt-3 mb-3">

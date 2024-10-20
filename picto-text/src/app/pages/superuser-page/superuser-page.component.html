@@ -1,1 +1,51 @@
-<p>superuser-page works!</p>
+<app-navbar></app-navbar>
+
+<div class="d-flex flex-column vh-100 card-user">
+  <div class="d-flex justify-content-center align-items-center flex-grow-1">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 text text-center">
+          <h2 class="pt-5">Generarea de Text</h2>
+          <p class="mt-1">Te rugăm să încarci imaginile, apoi să îți generezi textul!</p>
+          <p class="mt-1 mb-5">Opțional, poți salva generarea pe care o poți vizualiza în pagina de conținut.</p>
+        </div>
+      </div>
+      <form>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="col">
+              <div class="form-group mb-2">
+                <img [src] = "imgSrc" class="form-control img-fluid img-preview">
+                <input type="file" class="form-control no-hover-change" accept="image/*" (change)="showPreview($event)">
+              </div>
+              <div class="form-group">
+                <img [src] = "imgSrc" class="form-control img-fluid img-preview">
+                <input type="file" class="form-control no-hover-change" accept="image/*" (change)="showPreview($event)">
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="card shadow-effect">
+              <div class="card-body">
+                <div class="form-group">
+                  <label>Textul generat</label>
+                  <textarea cols="30" rows="10" class="form-control"></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="row mt-3 mb-5">
+          <div class="col-md-12 text-center mb-5">
+            <button class="btn me-3">Genereaza Text</button>
+            <button class="btn">Salvează Postarea</button>
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
