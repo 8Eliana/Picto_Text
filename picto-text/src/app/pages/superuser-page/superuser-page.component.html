@@ -10,27 +10,48 @@
           <p class="mt-1 mb-5">Opțional, poți salva generarea pe care o poți vizualiza în pagina de conținut.</p>
         </div>
       </div>
-      <form>
+      <form [formGroup]="postForm">
         <div class="row">
           <div class="col-md-6">
             <div class="col">
               <div class="form-group mb-2">
-                <img [src] = "imgSrc" class="form-control img-fluid img-preview">
-                <input type="file" class="form-control no-hover-change" accept="image/*" (change)="showPreview($event)">
+                <img [src]="imgSrc1" class="form-control img-fluid img-preview">
+                <input type="file"
+                       class="form-control no-hover-change"
+                       accept="image/*"
+                       formControlName="postImg1"
+                       (change)="showPreview1($event)"
+                       [ngClass]="{'is-invalid': fc['postImg1'].touched && fc['postImg1'].invalid}">
               </div>
               <div class="form-group">
-                <img [src] = "imgSrc" class="form-control img-fluid img-preview">
-                <input type="file" class="form-control no-hover-change" accept="image/*" (change)="showPreview($event)">
+                <img [src]="imgSrc2" class="form-control img-fluid img-preview">
+                <input type="file"
+                       class="form-control no-hover-change"
+                       accept="image/*"
+                       formControlName="postImg2"
+                       (change)="showPreview2($event)"
+                       [ngClass]="{'is-invalid': fc['postImg2'].touched && fc['postImg2'].invalid}">
               </div>
             </div>
           </div>
 
           <div class="col-md-6">
-            <div class="card shadow-effect">
-              <div class="card-body">
-                <div class="form-group">
-                  <label>Textul generat</label>
-                  <textarea cols="30" rows="10" class="form-control"></textarea>
+            <div class="col">
+              <div class="card shadow-effect mb-5">
+                <div class="card-body">
+                  <div class="form-group">
+                    <label>Textul generat</label>
+                    <textarea [value]="generatedText1" cols="30" rows="10" class="form-control" formControlName="text1" readonly></textarea>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card shadow-effect">
+                <div class="card-body">
+                  <div class="form-group">
+                    <label>Textul generat</label>
+                    <textarea [value]="generatedText2" cols="30" rows="10" class="form-control" formControlName="text2" readonly></textarea>
+                  </div>
                 </div>
               </div>
             </div>
@@ -40,8 +61,8 @@
 
         <div class="row mt-3 mb-5">
           <div class="col-md-12 text-center mb-5">
-            <button class="btn me-3">Genereaza Text</button>
-            <button class="btn">Salvează Postarea</button>
+            <button class="btn me-3" (click)="generateTextFromImage()" [disabled]="fc['postImg1'].invalid && fc['postImg2'].invalid">Genereaza Text</button>
+            <button class="btn" [disabled]="!generatedText1 && !generatedText2" (click)="onSubmit()">Salvează Postarea</button>
           </div>
         </div>
 

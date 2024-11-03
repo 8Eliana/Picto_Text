@@ -21,6 +21,8 @@ export class ImageCaptionService {
     );
     const result = await response.json();
     const apiResult = result[0];
+
+    console.log('api result', apiResult)
     return apiResult['generated_text'];
   }
 }

@@ -22,6 +22,16 @@ input[type="file"] {
   color: var(--primary-color);
 }
 
+img {
+
+}
+
 input[type="file"]{
   color: var(--secondary-color2);
+}
+
+.img-preview {
+  width: 650px;
+  height: 400px;
+  object-fit: cover;
 }
