@@ -1,30 +1,26 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import {map, Observable} from 'rxjs';
+import { HttpClient} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ImageCaptionService {
-  private apiUrl = 'https://api-inference.huggingface.co/models/Salesforce/blip-image-captioning-base';
 
-  constructor(private http: HttpClient) { }
-  generateCaption(image: File): Observable<any> {
-    const formData = new FormData();
-    formData.append('file', image); // Ensure 'file' matches what Hugging Face expects.
-
-    const headers = new HttpHeaders({
-      Authorization: `Bearer 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`,
-    });
-
-    return this.http.post<any>(
-      'https://api-inference.huggingface.co/models/Salesforce/blip-image-captioning-base',
-      formData,
-      { headers }
-    ).pipe(
-      map(response => {
-        return typeof response === 'string' ? JSON.parse(response) : response;
-      })
+  constructor() { }
+  async imageCaption(selectedImage:any) {
+    const response = await fetch(
+      "https://api-inference.huggingface.co/models/Salesforce/blip-image-captioning-base",
+      {
+        headers: {
+          Authorization: "Bearer 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",
+          "Content-Type": "application/json",
+        },
+        method: "POST",
+        body: selectedImage,
+      }
     );
+    const result = await response.json();
+    const apiResult = result[0];
+    return apiResult['generated_text'];
   }
 }

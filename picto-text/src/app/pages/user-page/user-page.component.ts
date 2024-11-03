@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import { ImageCaptionService } from "../../services/image-caption.service";
-import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {PostUser} from "../../models/post-user";
 import {PostService} from "../../services/post.service";
 
@@ -16,7 +15,7 @@ export class UserPageComponent {
   private selectedImage: any;
 
   postForm : FormGroup;
-  constructor(private fb: FormBuilder,private http: HttpClient,private imageCaptionService: ImageCaptionService,private postService : PostService) {
+  constructor(private fb: FormBuilder,private imageCaptionService: ImageCaptionService,private postService : PostService) {
     this.postForm = this.fb.group({
       text: ['',[Validators.required]],
       postImg: ['',[Validators.required]]
@@ -44,20 +43,12 @@ export class UserPageComponent {
   }
 
   async generateTextFromImage() {
-    const response = await fetch(
-      "https://api-inference.huggingface.co/models/Salesforce/blip-image-captioning-base",
-      {
-        headers: {
-          Authorization: "Bearer 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",
-          "Content-Type": "application/json",
-        },
-        method: "POST",
-        body: this.selectedImage,
+    if (this.selectedImage) {
+      try {
+        this.generatedText = await this.imageCaptionService.imageCaption(this.selectedImage);
+      } catch (error) {
+        console.error("Error generating text from image", error);
       }
-    );
-    const result = await response.json()
-    const apiResult = result[0]
-
-    this.generatedText = apiResult['generated_text']
+    }
   }
 }
