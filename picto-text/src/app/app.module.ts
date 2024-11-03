@@ -4,6 +4,8 @@ import { AngularFirestoreModule } from "@angular/fire/compat/firestore";
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from "@angular/common/http";
+import { ReactiveFormsModule } from "@angular/forms";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -40,6 +42,8 @@ import { UserContentPageComponent } from './pages/user-content-page/user-content
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
     FormsModule,
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

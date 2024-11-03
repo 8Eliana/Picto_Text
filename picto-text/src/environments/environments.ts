@@ -4,7 +4,7 @@ export const environment = {
     apiKey: "AIzaSyB5ItGCwuq8OKRtpe13sD64jdyH2mlrN6o",
     authDomain: "ang-picto-text.firebaseapp.com",
     projectId: "ang-picto-text",
-    storageBucket: "ang-picto-text.appspot.com",
+    storageBucket: "ang-picto-text.firebasestorage.app",
     messagingSenderId: "727673233256",
     appId: "1:727673233256:web:3d1c0a2d38eb1a23c640dd"
   }
