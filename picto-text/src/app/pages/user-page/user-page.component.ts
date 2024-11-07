@@ -13,8 +13,8 @@ export class UserPageComponent {
   imgSrc:any = './assets/placeholder-image.jpg';
   generatedText: string | undefined = undefined;
   private selectedImage: any;
-
   postForm : FormGroup;
+
   constructor(private fb: FormBuilder,private imageCaptionService: ImageCaptionService,private postService : PostService) {
     this.postForm = this.fb.group({
       text: ['',[Validators.required]],
@@ -39,7 +39,9 @@ export class UserPageComponent {
       postImgPath : this.imgSrc  ,
       text: this.generatedText ?? ''
     }
-    this.postService.uploadImage(this.selectedImage,postData);
+    this.postService.uploadImageUser(this.selectedImage,postData);
+    this.postForm.reset();
+    this.imgSrc = './assets/placeholder-image.jpg';
   }
 
   async generateTextFromImage() {

@@ -1,0 +1,22 @@
+.card-custom {
+  color: var(--secondary-color2);
+  background-color: var(--primary-color);
+}
+
+.button-custom{
+  background-color: var(--secondary-color2);
+  color: var(--primary-color);
+}
+
+th{
+  color: var(--secondary-color2);
+}
+
+td{
+  color: var(--secondary-color);
+}
+
+img {
+  width: 100px;
+  height: 100px;
+}

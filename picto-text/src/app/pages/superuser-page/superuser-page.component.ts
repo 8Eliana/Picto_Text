@@ -13,7 +13,6 @@ export class SuperuserPageComponent {
   imgSrc1:any = './assets/placeholder-image.jpg';
   imgSrc2:any = './assets/placeholder-image.jpg';
   private selectedImage1: any;
-  private images= new Map<string, Record<string, any>>();
   private selectedImage2: any;
   generatedText1: string | undefined = undefined;
   generatedText2: string | undefined = undefined;
@@ -58,8 +57,21 @@ export class SuperuserPageComponent {
       postImgPath2 : this.imgSrc2  ,
       text2: this.generatedText2 ?? ''
     }
-    this.postService.uploadImage(this.selectedImage1,postData);
-    this.postService.uploadImage(this.selectedImage2,postData);
+    if(postData.postImgPath1 === './assets/placeholder-image.jpg' && postData.postImgPath2 !== './assets/placeholder-image.jpg') {
+      this.postService.uploadImageSuperUser(this.selectedImage2,postData);
+      this.postForm.reset();
+      this.imgSrc2 = './assets/placeholder-image.jpg';
+    } else if(postData.postImgPath2 === './assets/placeholder-image.jpg' && postData.postImgPath1 !== './assets/placeholder-image.jpg' ){
+      this.postService.uploadImageSuperUser(this.selectedImage1,postData);
+      this.postForm.reset();
+      this.imgSrc1 = './assets/placeholder-image.jpg';
+    } else {
+      this.postService.uploadImageSuperUser(this.selectedImage1, postData);
+      this.postService.uploadImageSuperUser(this.selectedImage2, postData);
+      this.postForm.reset();
+      this.imgSrc1 = './assets/placeholder-image.jpg';
+      this.imgSrc2 = './assets/placeholder-image.jpg';
+    }
   }
 
   async generateTextFromImage1() {
@@ -83,6 +95,12 @@ export class SuperuserPageComponent {
   }
 
   async generateTextFromImage() {
-   await Promise.all([this.generateTextFromImage1(), this.generateTextFromImage2()])
+    if(this.selectedImage1 === './assets/placeholder-image.jpg' && this.selectedImage2 !== './assets/placeholder-image.jpg'){
+      await this.generateTextFromImage2();
+    } else if (this.selectedImage2 === './assets/placeholder-image.jpg' && this.selectedImage1 !== './assets/placeholder-image.jpg'){
+      await this.generateTextFromImage1();
+    } else {
+      await Promise.all([this.generateTextFromImage1(),this.generateTextFromImage2()])
+    }
   }
 }
