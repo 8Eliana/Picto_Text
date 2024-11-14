@@ -3,6 +3,8 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ImageCaptionService} from "../../services/image-caption.service";
 import {PostService} from "../../services/post.service";
 import {PostSuperUser} from "../../models/post-super-user";
+import firebase from "firebase/compat";
+import { Timestamp } from 'firebase/firestore';
 
 @Component({
   selector: 'app-superuser-page',
@@ -55,7 +57,8 @@ export class SuperuserPageComponent {
       postImgPath1 : this.imgSrc1  ,
       text1: this.generatedText1 ?? '',
       postImgPath2 : this.imgSrc2  ,
-      text2: this.generatedText2 ?? ''
+      text2: this.generatedText2 ?? '',
+      timestamp: Timestamp.now()
     }
     if(postData.postImgPath1 === './assets/placeholder-image.jpg' && postData.postImgPath2 !== './assets/placeholder-image.jpg') {
       this.postService.uploadImageSuperUser(this.selectedImage2,postData);

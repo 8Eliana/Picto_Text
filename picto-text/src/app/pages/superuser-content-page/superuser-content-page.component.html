@@ -28,7 +28,12 @@
             <tr *ngFor="let post of postArray; let i = index">
               <td style="width: 30px">{{ i + 1 }}</td>
               <td style="width: 200px">
-                <img src="{{ post.data.postImgPath }}" class="img img-fluid mt-1" />
+                <ng-container *ngIf="(i + 1) % 2 !== 0; else showImg2">
+                  <img src="{{ post.data.postImgPath1 }}" class="img img-fluid mt-1" />
+                </ng-container>
+                <ng-template #showImg2>
+                  <img src="{{ post.data.postImgPath2 }}" class="img img-fluid mt-1" />
+                </ng-template>
               </td>
               <td style="width: 200px">
                 <ng-container *ngIf="(i + 1) % 2 !== 0; else showText2">

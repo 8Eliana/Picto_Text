@@ -62,7 +62,7 @@ export class PostService {
       });
   }
 
-
+  //-----SuperUser
   uploadImageSuperUser(selectedImage :any,postData :any){
     const filePath = `postIMG1/${Date.now()}`;
     console.log(filePath);
@@ -76,8 +76,6 @@ export class PostService {
     });
   }
 
-
-  //-----SuperUser
   saveDataSuperUser(postData :any) {
     this.afs.collection('superuser-posts').add(postData).then(docRef => {
       this.toastr.success('Datele au fost salvate cu succes!');
@@ -85,7 +83,7 @@ export class PostService {
   }
 
   loadDataSuperUser(){
-    return this.afs.collection('superuser-posts').snapshotChanges().pipe(map(action => {
+    return this.afs.collection('superuser-posts',ref => ref.orderBy('timestamp', 'desc')).snapshotChanges().pipe(map(action => {
       return action.map(a => {
         const data = a.payload.doc.data();
         const id = a.payload.doc.id;
